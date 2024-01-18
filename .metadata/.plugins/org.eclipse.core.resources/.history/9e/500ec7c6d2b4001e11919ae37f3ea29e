@@ -1,0 +1,50 @@
+package com.myweb.www.config;
+
+import javax.sql.DataSource;
+
+import org.mybatis.spring.annotation.MapperScan;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.scheduling.annotation.EnableScheduling;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
+
+import com.zaxxer.hikari.HikariConfig;
+
+@MapperScan(basePackages= {"com.myweb.www.repository"})
+@ComponentScan(basePackages= {"com.myweb.www.service"})
+@EnableTransactionManagement
+@EnableScheduling
+@Configuration
+public class RootConfig {
+	// DB 설정 부분
+	// hicariCp 사용 / log4jdbc - log4j2 사용
+	
+	@Autowired
+	ApplicationContext applicationContext;
+	
+	public DataSource dataSource() {
+		HikariConfig hikariConfig = new HikariConfig();
+		// log4jdbc - log4j2
+		hikariConfig.setDriverClassName("net.sf.log4jdbc.sql.jdbcapi.DriverSpy");
+		hikariConfig.setJdbcUrl("jdbc:log4jdbc:mysql://localhost:3306/mywebdb");
+		hikariConfig.setUsername("mywebUser");
+		hikariConfig.setPassword("mysql");
+		
+		//hikari에서 추가되는것
+		hikariConfig.setMaximumPoolSize(5); //최대 커넥션 개수 /5개가 가장 무난한 사이즈
+		hikariConfig.setMinimumIdle(5); //최소 유휴 커넥션 개수(최대 커넥션 개수와 같은 갑으로 설정하는게 대부분)
+		
+		hikariConfig.setConnectionTestQuery("SELECT no()"); //test 쿼리문
+		hikariConfig.setPoolName("springHikariCP");
+		
+		//추가설정
+		
+		
+		
+		
+	}
+	
+	
+}

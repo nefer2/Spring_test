@@ -1,0 +1,49 @@
+package com.myweb.www.handler;
+
+import java.io.File;
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.UUID;
+
+import org.springframework.web.multipart.MultipartFile;
+
+import com.myweb.www.domain.FileVO;
+
+public class FileHandler {
+
+	private final String UP_DIR = "D:\\_myProject\\_java\\_fileUpload";
+	
+	public List<FileVO> uploadFiles(MultipartFile[] files){
+		List<FileVO> flist = new ArrayList<>();
+		LocalDate date = LocalDate.now();
+		String today = date.toString();
+		today = today.replace("-", File.separator);
+		
+		File folders = new File(UP_DIR, today);
+		
+		if(!folders.exists()) {
+			folders.mkdirs();
+		}
+		for(MultipartFile file : files) {
+			FileVO fvo = new FileVO();
+			fvo.setSaveDir(today);
+			fvo.setFileSize(file.getSize());
+			
+			String originalFileName = file.getOriginalFilename();
+			String fileName = originalFileName.substring(
+					originalFileName.lastIndexOf(File.separator));
+			fvo.setFileName(fileName);
+			
+			UUID uuid = UUID.randomUUID();
+			String uuidstr = uuid.toString();
+			fvo.setUuid(uuidstr);
+			
+			String fullFileName = uuidstr+"_"+fileName;
+			File storeFile = new File(folders, fullFileName);
+		}
+		
+		
+		return flist;
+	}
+}

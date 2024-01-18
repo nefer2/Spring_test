@@ -1,0 +1,34 @@
+package com.myweb.www.config;
+
+import javax.sql.DataSource;
+
+import org.mybatis.spring.annotation.MapperScan;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.scheduling.annotation.EnableScheduling;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
+
+import com.zaxxer.hikari.HikariConfig;
+
+@MapperScan(basePackages= {"com.myweb.www.repository"})
+@ComponentScan(basePackages= {"com.myweb.www.service"})
+@EnableTransactionManagement
+@EnableScheduling
+@Configuration
+public class RootConfig {
+	// DB 설정 부분
+	// hicariCp 사용 / log4jdbc - log4j2 사용
+	
+	@Autowired
+	ApplicationContext applicationContext;
+	
+	public DataSource dataSource() {
+		HikariConfig hikariConfig = new HikariConfig();
+		// log4jdbc - log4j2
+		hika
+	}
+	
+	
+}

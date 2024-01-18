@@ -1,0 +1,6 @@
+package com.myweb.www.handler;
+
+public class FileHandler {
+
+	private final String UP_DIR = "D:\\_myProject\\_java\\_fileUpload";
+}

@@ -1,0 +1,15 @@
+
+1월 17, 2024 13:46:12.425 NEW SESSION
+1월 17, 2024 13:46:12.425 [1364:9080:0117/134612.424:ERROR:CONSOLE(0)] "ReferenceError: dragEvent is not defined", source:  (0)
+1월 17, 2024 13:46:13.779 [1364:9080:0117/134613.779:ERROR:CONSOLE(0)] "ReferenceError: dragEvent is not defined", source:  (0)
+1월 17, 2024 14:44:02.953 [12520:10800:0117/144402.953:ERROR:interface_endpoint_client.cc(702)] Message 1 rejected by interface blink.mojom.WidgetHost
+
+1월 18, 2024 10:50:38.543 NEW SESSION
+1월 18, 2024 10:50:38.543 INFO: Created TensorFlow Lite XNNPACK delegate for CPU.
+1월 18, 2024 13:58:04.461 [8172:7588:0118/135804.460:ERROR:CONSOLE(0)] "ReferenceError: dragEvent is not defined", source:  (0)
+1월 18, 2024 13:58:04.990 [8172:7588:0118/135804.990:ERROR:CONSOLE(0)] "ReferenceError: dragEvent is not defined", source:  (0)
+1월 18, 2024 13:59:09.173 [8172:7588:0118/135909.173:ERROR:CONSOLE(0)] "ReferenceError: dragEvent is not defined", source:  (0)
+1월 18, 2024 13:59:11.83 [8172:7588:0118/135911.083:ERROR:CONSOLE(0)] "ReferenceError: dragEvent is not defined", source:  (0)
+1월 18, 2024 14:13:26.750 [6712:12368:0118/141326.750:ERROR:interface_endpoint_client.cc(702)] Message 1 rejected by interface blink.mojom.WidgetHost
+1월 18, 2024 15:00:01.72 [3692:1900:0118/150001.072:ERROR:CONSOLE(0)] "ReferenceError: dragEvent is not defined", source:  (0)
+1월 18, 2024 15:00:03.63 [3692:1900:0118/150003.063:ERROR:CONSOLE(0)] "ReferenceError: dragEvent is not defined", source:  (0)
