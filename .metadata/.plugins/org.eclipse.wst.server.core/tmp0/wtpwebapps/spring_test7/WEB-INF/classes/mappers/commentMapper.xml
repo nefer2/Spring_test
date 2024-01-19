@@ -5,7 +5,7 @@
 <mapper namespace="com.myweb.www.repository.CommentDAO">
 
 <insert id="insert">
-	insert into commnet (bno, writer, content)
+	insert into comment (bno, writer, content)
 	values(#{bno}, #{writer}, #{content})
 </insert>
 

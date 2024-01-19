@@ -11,9 +11,9 @@ public interface CommentDAO {
 
 	int insert(CommentVO cvo);
 
-	int selectOneBnoTotalCount(long bno);
-
 	List<CommentVO> getList(@Param("bno")long bno, @Param("pgvo")PagingVO pgvo);
+
+	int selectOneBnoTotalCount(long bno);
 
 	int modify(CommentVO cvo);
 

@@ -97,11 +97,11 @@
 			<span class="badge rounded-pill text-bg-warning">modAt</span>
 		</li>
 	</ul>
-</div>
 	
 	<div>
 		<button type="button" id="moreBtn" data-page="1" class="btn btn-dark" style="visibility:hidden">More +</button>
 	</div>
+</div>
 
 <!-- 모달 창 -->
 <div class="modal" id="myModal" tabindex="-1">

@@ -49,7 +49,6 @@
 	      <c:if test="${bvo.cmtQty ne '0'}">[${bvo.cmtQty }]
 	      </c:if>
 	      </a></td>
-	      
 	      <td>${bvo.writer }</td>
 	      <td>${bvo.regAt }</td>
 	      <td>${bvo.readCount }</td>

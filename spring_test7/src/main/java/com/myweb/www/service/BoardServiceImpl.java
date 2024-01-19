@@ -19,6 +19,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 @Service
 @RequiredArgsConstructor
+
 public class BoardServiceImpl implements BoardService{
 	
 	private final BoardDAO bdao;
@@ -44,6 +45,8 @@ public class BoardServiceImpl implements BoardService{
 
 	@Override
 	public List<BoardVO> getList(PagingVO pgvo) {
+		bdao.updateCommentCount();
+		bdao.updateFileCount();
 		return bdao.getList(pgvo);
 	}
 
@@ -66,11 +69,24 @@ public class BoardServiceImpl implements BoardService{
 		return bdao.getTotalCount(pgvo);
 	}
 
+	@Transactional
 	@Override
-	public int update(BoardVO bvo) {
+	public int update(BoardDTO bdto) {
+		log.info("update check1");
+		int isOk = bdao.update(bdto.getBvo());
+		if(bdto.getFlist() == null) {
+			return isOk;
+		}
 		
-		return bdao.update(bvo);
-		
+		//bvo insert 후 파일도 있다면..
+		if(isOk > 0 && bdto.getFlist().size() > 0) {
+			//bno setting
+			for(FileVO fvo: bdto.getFlist()) {
+				fvo.setBno(bdto.getBvo().getBno());
+				isOk *= fdao.insertFile(fvo);
+			}
+		}
+		return isOk;
 	}
 
 	@Override
@@ -78,5 +94,13 @@ public class BoardServiceImpl implements BoardService{
 		bdao.remove(bno);
 		
 	}
+
+	@Override
+	public int delFile(String uuid) {
+		
+		return fdao.delete(uuid);
+	}
+
+
 
 }	

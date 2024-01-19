@@ -13,3 +13,7 @@
 1월 18, 2024 14:13:26.750 [6712:12368:0118/141326.750:ERROR:interface_endpoint_client.cc(702)] Message 1 rejected by interface blink.mojom.WidgetHost
 1월 18, 2024 15:00:01.72 [3692:1900:0118/150001.072:ERROR:CONSOLE(0)] "ReferenceError: dragEvent is not defined", source:  (0)
 1월 18, 2024 15:00:03.63 [3692:1900:0118/150003.063:ERROR:CONSOLE(0)] "ReferenceError: dragEvent is not defined", source:  (0)
+
+1월 19, 2024 09:16:51.379 NEW SESSION
+1월 19, 2024 09:16:51.379 [2728:8724:0119/091651.378:ERROR:CONSOLE(1)] "Request Network.loadNetworkResource failed. {"code":-32602,"message":"Unsupported URL scheme"}", source: devtools://devtools/bundled/devtools-frontend/front_end/core/protocol_client/protocol_client.js (1)
+1월 19, 2024 12:39:14.455 [5660:5208:0119/123914.455:ERROR:interface_endpoint_client.cc(702)] Message 0 rejected by interface blink.mojom.WidgetHost

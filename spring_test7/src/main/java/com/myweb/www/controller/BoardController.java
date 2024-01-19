@@ -2,9 +2,14 @@ package com.myweb.www.controller;
 
 import java.util.List;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -63,8 +68,14 @@ public class BoardController {
 	}
 	
 	@PostMapping("/modify")
-	public String modify(BoardVO bvo, RedirectAttributes re) {
-		int isOk = bsv.update(bvo);
+	public String modify(BoardVO bvo, RedirectAttributes re, 
+			@RequestParam(name="files", required = false)MultipartFile[] files) {
+		log.info(">>>> bvo >>>>{} " , bvo);
+		List<FileVO> flist = null;
+		if(files[0].getSize()>0) {
+			flist = fh.uploadFiles(files);
+		}
+		int isOk = bsv.update(new BoardDTO(bvo,flist));
 		return "redirect:/board/detail?bno="+bvo.getBno();
 	}
 	
@@ -72,6 +83,14 @@ public class BoardController {
 	public String delete(@RequestParam("bno")long bno, RedirectAttributes re) {
 		bsv.remove(bno);
 		return "redirect:/board/list";
+	}
+	
+	@DeleteMapping(value="/file/{uuid}", produces = MediaType.TEXT_PLAIN_VALUE)
+	public ResponseEntity<String> removeFile(@PathVariable ("uuid") String uuid){
+		log.info(">>>> uuid >>>>{}", uuid);
+		int isOk = bsv.delFile(uuid);
+		return isOk > 0 ? new ResponseEntity<String>("1",HttpStatus.OK)
+				: new ResponseEntity<String>("0",HttpStatus.INTERNAL_SERVER_ERROR);
 	}
 	
 	

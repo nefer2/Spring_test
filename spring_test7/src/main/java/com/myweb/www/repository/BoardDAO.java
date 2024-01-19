@@ -11,16 +11,21 @@ public interface BoardDAO {
 
 	List<BoardVO> getList(PagingVO pgvo);
 
-	int readCountUpdate(int bno);
-
 	BoardVO getdetail(int bno);
-
-	int getTotalCount(PagingVO pgvo);
 
 	int update(BoardVO bvo);
 
 	void remove(long bno);
 
+	int readCountUpdate(int bno);
+
+	int getTotalCount(PagingVO pgvo);
+
 	long selectOneBno();
 
+	void updateCommentCount();
+
+	void updateFileCount();
+
+	
 }
